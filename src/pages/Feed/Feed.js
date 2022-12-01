@@ -376,7 +376,7 @@ class Feed extends Component {
         </section>
         <section className="feed__control">
           <Button mode="raised" design="accent" onClick={this.newPostHandler}>
-            New Post
+            Add A New Task
           </Button>
         </section>
         <section className="feed">
@@ -386,7 +386,7 @@ class Feed extends Component {
             </div>
           )}
           {this.state.posts.length <= 0 && !this.state.postsLoading ? (
-            <p style={{ textAlign: "center" }}>No posts found.</p>
+            <p style={{ textAlign: "center" }}>No tasks found.</p>
           ) : null}
           {!this.state.postsLoading && (
             <Paginator
