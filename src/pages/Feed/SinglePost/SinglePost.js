@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import Image from '../../../components/Image/Image';
-import './SinglePost.css';
+import Image from "../../../components/Image/Image";
+import "./SinglePost.css";
 
 class SinglePost extends Component {
   state = {
-    title: '',
-    author: '',
-    date: '',
-    image: '',
-    content: ''
+    title: "",
+    author: "",
+    date: "",
+    image: "",
+    content: "",
   };
 
   componentDidMount() {
@@ -26,32 +26,34 @@ class SinglePost extends Component {
             createdAt
           }
         }
-      `
+      `,
     };
-    fetch('http://localhost:8080/graphql', {
-      method: 'POST',
+    fetch(`${process.env.REACT_APP_DEV}/graphql`, {
+      method: "POST",
       headers: {
-        Authorization: 'Bearer ' + this.props.token,
-        'Content-Type': 'application/json'
+        Authorization: "Bearer " + this.props.token,
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(graphqlQuery)
+      body: JSON.stringify(graphqlQuery),
     })
-      .then(res => {
+      .then((res) => {
         return res.json();
       })
-      .then(resData => {
+      .then((resData) => {
         if (resData.errors) {
-          throw new Error('Fetching post failed!');
+          throw new Error("Fetching post failed!");
         }
         this.setState({
           title: resData.data.post.title,
           author: resData.data.post.creator.name,
-          image: 'http://localhost:8080/' + resData.data.post.imageUrl,
-          date: new Date(resData.data.post.createdAt).toLocaleDateString('en-US'),
-          content: resData.data.post.content
+          image: "${process.env.REACT_APP_DEV}/" + resData.data.post.imageUrl,
+          date: new Date(resData.data.post.createdAt).toLocaleDateString(
+            "en-US"
+          ),
+          content: resData.data.post.content,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }
