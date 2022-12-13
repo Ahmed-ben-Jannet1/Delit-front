@@ -4,23 +4,23 @@ import "./Logo.css";
 
 const logo = (props) => (
   <Fragment>
-    <div className="logo">
-      <div>
+    <span className="logo">
+      <span>
         <img
           style={{
             widh: "3rem",
             height: "3rem",
-            marginTop: "0.5rem",
+            marginTop: "-0.7rem",
             paddingRight: "0.5rem",
           }}
           src="/./logo.png"
           alt=""
         />
-      </div>
-      <div>
+      </span>
+      <span style={{ marginTop: "-1.2rem" }}>
         <h1>DELIT</h1>
-      </div>
-    </div>
+      </span>
+    </span>
   </Fragment>
 );
 

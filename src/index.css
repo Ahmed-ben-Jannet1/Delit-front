@@ -4,4 +4,6 @@
 
 body {
   font-family: sans-serif;
+  background: url("/public/showcase.jpg") repeat center center/cover;
+  background-size: 100%;
 }
